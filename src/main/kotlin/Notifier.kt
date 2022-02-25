@@ -8,7 +8,8 @@ class Notifier(private val repository: FriendRepository,
   fun sendGreetings() {
     repository
         .read()
-        .filter { it.dateOfBirth.dayOfMonth == dateSupplier.get().dayOfMonth && it.dateOfBirth.month == dateSupplier.get().month }
+        .filter { it.dateOfBirth.dayOfMonth == dateSupplier.get().dayOfMonth &&
+                it.dateOfBirth.month == dateSupplier.get().month }
         .map { sender.sendTo(it.contact) }
   }
 }
